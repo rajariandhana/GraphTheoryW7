@@ -42,7 +42,9 @@ function GeneratePath() {
         path.forEach((i) => {
             console.log(i[0] + " " + i[1]);
         });
+        return true;
     }
+    return false
 }
 
 function main() {
@@ -100,8 +102,11 @@ function ParseInput(){
             }
         }
     }
-    GeneratePath();
-    GenerateGrid();
+    if(GeneratePath()) GenerateGrid();
+    else{
+        const notFound = document.getElementById('notFound');
+        notFound.classList.remove('hidden');
+    }
 }
 function GenerateGrid() {
     const gridBody = document.getElementById('gridBody');
