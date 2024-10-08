@@ -1,4 +1,9 @@
 # GraphTheoryW7
+| NRP | Name |
+| --- | ---- |
+| 5025221076 | Surya Prima Pradana |
+| 5025221081 | Ralfazza Rajariandhana |
+| 5025221096 | Maheswari Parisya Putri |
  
 ## The Knight's Tour
 Demonstration is available in graph.ralfazza.com
@@ -7,7 +12,7 @@ Demonstration is available in graph.ralfazza.com
 Given a chessboard with a single knight, we must find out if the knight can visit all squares in the board only once. We can represent this problem into an undirected unweighted graph problem such that each vertex is a square in the board with any vertices in reach from a knight's moveset is the adjacent vertices. Since all vertices must be visited once, The Knight's Tour is also a Hamiltonian Path problem.
 
 ### Algorithm
-A simple DFS is used.
+Since a chessboard have a size of 8x8, a simple DFS that brute forces is used.
 
 ### Graph Representation
 Adjacency List is used where each vertex contains a list of vertices in range. Since a coordinate is used as a key, the graph is representated as
