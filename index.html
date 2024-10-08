@@ -9,7 +9,10 @@
 </head>
 
 <body class="flex flex-col m-4 bg-gray-100 gap-y-4 justify-center items-center">
-    <span class="text-xl font-semibold">Graph Theory: The Knight's Tour</span>
+    <div class="flex flex-col text-center">
+        <span class="text-sm">Graph Theory</span>
+        <span class="text-xl font-semibold">The Knight's Tour</span>
+    </div>
     <!-- <div class="flex items-center p-4 bg-white rounded-md shadow-md w-fit">
         <input type="file" id="fileInput" class=""/>
     </div> -->
@@ -40,12 +43,8 @@
         </div>
         <button onclick="ParseInput()" class="px-4 py-2 text-white bg-indigo-500 rounded-md shadow-md w-fit">Find Path</button>
     </div>
-    <!-- <table class="p-4 bg-white border-collapse rounded-md shadow-md">
-        <tbody class="bg-red-200 border-black" id="gridBody">
 
-        </tbody>
-    </table> -->
-    <div id="gridBody" class="grid gap-2 p-4 bg-white border-collapse rounded-md shadow-md w-fit h-fit">
+    <div id="gridBody" class="grid gap-2 p-4 bg-white border-collapse rounded-md shadow-md w-fit h-fit hidden">
         
     </div>
     <script src="knights.js"></script>

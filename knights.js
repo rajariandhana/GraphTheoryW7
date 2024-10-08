@@ -108,6 +108,7 @@ function GenerateGrid() {
     gridBody.innerHTML = '';
     gridClassName = 'grid-cols-'+columns;
     gridBody.classList.add(gridClassName);
+    gridBody.classList.remove('hidden');
     for(let r=0; r<rows; r++){
         // let newRow = document.createElement('tr');
         for(let c=0; c<columns; c++)
@@ -121,22 +122,7 @@ function GenerateGrid() {
         }
         // gridBody.appendChild(newRow);
     }
-    // for (let r = 0; r < rows; r++) {
-    //     const row = table.insertRow();
-    //     for (let c = 0; c < columns; c++) {
-    //         const cell = row.insertCell();
-    //         cell.classList.add('border', 'w-12', 'h-12', 'text-center', 'font-semibold');
-            
-    //         if (r === sourceR && c === sourceC) {
-    //             cell.classList.add('bg-green-400');
-    //             cell.textContent = 'S';
-    //         } else {
-    //             cell.classList.add('bg-gray-200');
-    //         }
-    //     }
-    // }
 
-    // // Start coloring the path
     let index = 0;
     const interval = setInterval(() => {
         if (index < path.length) {
@@ -145,10 +131,10 @@ function GenerateGrid() {
             const cell = document.getElementById(gridId);
             cell.classList.remove('bg-indigo-200');
             cell.classList.add('bg-rose-400', 'text-white');
-            cell.textContent = index + 1; // Set the text content to the current step number
+            cell.textContent = index + 1;
             index++;
         } else {
-            clearInterval(interval); // Stop when done
+            clearInterval(interval);
         }
     }, 500);
 
