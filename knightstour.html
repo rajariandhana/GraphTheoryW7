@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Path Representation</title>
-    <style>
+    <!-- <style>
         table {
             border-collapse: collapse;
             margin: 20px;
@@ -18,14 +18,43 @@
             text-align: center;
             vertical-align: middle;
         }
-    </style>
-    <link href="./src/output.css" rel="stylesheet">
+    </style> -->
+    <!-- <link href="./src/output.css" rel="stylesheet"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <input type="file" id="fileInput" />
-    <table id="gridTable"></table>
-    <script>
+<body class="flex flex-col m-4 bg-gray-100 gap-y-4">
+    <span class="text-xl font-semibold">The Knight's Tour</span>
+    <div class="flex items-center p-4 bg-white rounded-md shadow-md w-fit">
+        <input type="file" id="fileInput" class=""/>
+    </div>
+    <div class="flex flex-col justify-center p-4 bg-white rounded-md shadow-md w-fit">
+        <span class="mb-2 text-lg font-semibold">Graph Size</span>
+        <div class="flex items-center gap-2 mb-4">
+            <label for="row">Row</label>
+            <input type="number" name="row" class="w-20 h-8 border border-gray-400 rounded-md bg-gray-50" id="n_row" value="5">
+            <label for="column">Column</label>
+            <input type="number" name="column" class="w-20 h-8 border border-gray-400 rounded-md bg-gray-50" id="n_column" value="5">
+        </div>
+        <span class="mb-2 text-lg font-semibold">Source</span>
+        <div class="flex items-center gap-2 mb-4">
+            <label for="source_row">Source Row</label>
+            <input type="number" name="source_row" class="w-20 h-8 border border-gray-400 rounded-md bg-gray-50" id="src_row" value="2">
+            <label for="source_column">Source Column</label>
+            <input type="number" name="source_column" class="w-20 h-8 border border-gray-400 rounded-md bg-gray-50" id="src_column" value="2">
+        </div>
+        <button onclick="ParseInput()" class="px-4 py-2 text-white bg-indigo-500 rounded-md shadow-md w-fit">Find Path</button>
+    </div>
+    <!-- <table class="p-4 bg-white border-collapse rounded-md shadow-md">
+        <tbody class="bg-red-200 border-black" id="gridBody">
+
+        </tbody>
+    </table> -->
+    <div id="gridBody" class="grid gap-2 p-4 bg-white border-collapse rounded-md shadow-md w-fit h-fit">
+        
+    </div>
+    <script src="knights.js"></script>
+    <!-- <script>
         document.getElementById('fileInput').addEventListener('change', handleFileSelect);
 
         function handleFileSelect(event) {
@@ -76,7 +105,7 @@
             }, 500);
 
         }
-    </script>
+    </script> -->
 
 </body>
 
