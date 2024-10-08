@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="flex flex-col m-4 bg-gray-100 gap-y-4 justify-center items-center">
+<body class="flex flex-col items-center justify-center m-4 bg-gray-100 gap-y-4">
     <div class="flex flex-col text-center">
         <span class="text-sm">Graph Theory</span>
         <a href="/" class="text-xl font-semibold">The Knight's Tour</a>
@@ -17,16 +17,16 @@
         <input type="file" id="fileInput" class=""/>
     </div> -->
     <div class="flex flex-col justify-center p-4 bg-white rounded-md shadow-md w-fit ">
-        <div class="flex gap-x-12 mb-4">
+        <div class="flex mb-4 gap-x-12">
             <div class="flex flex-col">
                 <div class="col-span-2 mb-2 text-lg font-semibold">
                     Chessboard Size
                 </div>
                 <div>
                     <span>Row</span>
-                    <input type="number" name="row" min="3" max="8" class="w-10 text-center h-8 border border-gray-400 rounded-md bg-gray-50" id="n_row" value="5">
+                    <input type="number" name="row" min="3" max="8" class="w-10 h-8 text-center border border-gray-400 rounded-md bg-gray-50" id="n_row" value="5">
                     <span>Column</span>
-                    <input type="number" name="column" min="3" max="8" class="w-10 text-center h-8 border border-gray-400 rounded-md bg-gray-50" id="n_column" value="5">
+                    <input type="number" name="column" min="3" max="8" class="w-10 h-8 text-center border border-gray-400 rounded-md bg-gray-50" id="n_column" value="5">
                 </div>
             </div>
             <div>
@@ -35,18 +35,18 @@
                 </div>
                 <div>
                     <span>Row</span>
-                    <input type="number" name="source_row" class="w-10 text-center h-8 border border-gray-400 rounded-md bg-gray-50" id="src_row" value="2">
+                    <input type="number" name="source_row" class="w-10 h-8 text-center border border-gray-400 rounded-md bg-gray-50" id="src_row" value="2">
                     <span>Column</span>
-                    <input type="number" name="source_column" class="w-10 text-center h-8 border border-gray-400 rounded-md bg-gray-50" id="src_column" value="2">
+                    <input type="number" name="source_column" class="w-10 h-8 text-center border border-gray-400 rounded-md bg-gray-50" id="src_column" value="2">
                 </div>
             </div>
         </div>
-        <button onclick="ParseInput()" class="px-4 py-2 text-white bg-indigo-500 rounded-md shadow-md w-fit">Find Path</button>
+        <button onclick="FindPath()" class="px-4 py-2 text-white bg-indigo-500 rounded-md shadow-md w-fit">Find Path</button>
     </div>
-    <div id="notFound" class="bg-white px-4 py-2 rounded-md shadow-md text-rose-500 border border-rose-500 w-96 text-center hidden">
+    <div id="notFound" class="hidden px-4 py-2 text-center bg-white border rounded-md shadow-md text-rose-500 border-rose-500 w-96">
         Path Not Found
     </div>
-    <div id="gridBody" class="grid gap-2 p-4 bg-white border-collapse rounded-md shadow-md w-fit h-fit hidden">
+    <div id="gridBody" class="grid hidden gap-2 p-4 bg-white border-collapse rounded-md shadow-md w-fit h-fit">
         
     </div>
     <script src="knights.js"></script>

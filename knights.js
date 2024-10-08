@@ -4,11 +4,11 @@ const knightMovesR = [1, 2, 2, 1, -1, -2, -2, -1];
 const knightMovesC = [-2, -1, 1, 2, 2, 1, -1, -2];
 let rows, columns, nNodes, sourceR, sourceC;
 
-const nodes = {};
-const vis = {};
-const path = [];
+let nodes = {};
+let vis = {};
+let path = [];
 
-function validCoord(r, c) {
+function ValidCoordinate(r, c) {
     return r >= 0 && c >= 0 && r < rows && c < columns;
 }
 
@@ -30,58 +30,7 @@ function Hamiltonian(r, c) {
     return false;
 }
 
-function GeneratePath() {
-    for (let i = 0; i < rows; i++) {
-        vis[i] = {};
-        for (let j = 0; j < columns; j++) {
-            vis[i][j] = false;
-        }
-    }
-    path.push([sourceR, sourceC]);
-    if (Hamiltonian(sourceR, sourceC)) {
-        path.forEach((i) => {
-            console.log(i[0] + " " + i[1]);
-        });
-        return true;
-    }
-    return false
-}
-
-function main() {
-    rows = parseInt(prompt("Number of rows: "));
-    columns = parseInt(prompt("Number of columns: "));
-    sourceR = parseInt(prompt("Source row: "));
-    sourceC = parseInt(prompt("Source column: "));
-    nNodes = rows * columns;
-
-    for (let i = 0; i < rows; i++) {
-        nodes[i] = {};
-        for (let j = 0; j < columns; j++) {
-            nodes[i][j] = [];
-            for (let k = 0; k < 8; k++) {
-                const newR = i + knightMovesR[k];
-                const newC = j + knightMovesC[k];
-                if (validCoord(newR, newC)) nodes[i][j].push([newR, newC]);
-            }
-        }
-    }
-
-    GeneratePath();
-
-    const data = `${rows}\n${columns}\n${sourceR}\n${sourceC}\n${nNodes}\n` + path.map(p => `${p[0]} ${p[1]}`).join('\n');
-
-    fs.writeFile('path.txt', data, (err) => {
-        if (err) {
-            console.error("Unable to open file for writing.");
-        } else {
-            console.log("Data exported to path.txt successfully.");
-        }
-    });
-}
-
-// main();
-function ParseInput(){
-    // console.log("hehe");
+function Init(){
     rows = document.getElementById('n_row').value;
     columns = document.getElementById('n_column').value;
     nNodes = rows*columns;
@@ -91,18 +40,77 @@ function ParseInput(){
     // console.log(columns);
     // console.log(sourceR);
     // console.log(sourceC);
+    nodes = {};
+    vis = {};
+    path = [];
+    for (let i = 0; i < rows; i++) {
+        vis[i] = {};
+        for (let j = 0; j < columns; j++) {
+            vis[i][j] = false;
+        }
+    }
+    path.push([sourceR, sourceC]);
     for (let i = 0; i < rows; i++) {
         nodes[i] = {};
         for (let j = 0; j < columns; j++) {
             nodes[i][j] = [];
             for (let k = 0; k < 8; k++) {
-                const newR = i + knightMovesR[k];
-                const newC = j + knightMovesC[k];
-                if (validCoord(newR, newC)) nodes[i][j].push([newR, newC]);
+                let newR = i + knightMovesR[k];
+                let newC = j + knightMovesC[k];
+                if (ValidCoordinate(newR, newC)) nodes[i][j].push([newR, newC]);
             }
         }
     }
-    if(GeneratePath()) GenerateGrid();
+}
+
+function KnightsTour() {
+    if (Hamiltonian(sourceR, sourceC)) {
+        path.forEach((i) => {
+            console.log(i[0] + " " + i[1]);
+        });
+        return path;
+    }
+    return false;
+}
+
+// function main() {
+//     rows = parseInt(prompt("Number of rows: "));
+//     columns = parseInt(prompt("Number of columns: "));
+//     sourceR = parseInt(prompt("Source row: "));
+//     sourceC = parseInt(prompt("Source column: "));
+//     nNodes = rows * columns;
+
+//     for (let i = 0; i < rows; i++) {
+//         nodes[i] = {};
+//         for (let j = 0; j < columns; j++) {
+//             nodes[i][j] = [];
+//             for (let k = 0; k < 8; k++) {
+//                 const newR = i + knightMovesR[k];
+//                 const newC = j + knightMovesC[k];
+//                 if (validCoord(newR, newC)) nodes[i][j].push([newR, newC]);
+//             }
+//         }
+//     }
+
+//     GeneratePath();
+
+//     const data = `${rows}\n${columns}\n${sourceR}\n${sourceC}\n${nNodes}\n` + path.map(p => `${p[0]} ${p[1]}`).join('\n');
+
+//     fs.writeFile('path.txt', data, (err) => {
+//         if (err) {
+//             console.error("Unable to open file for writing.");
+//         } else {
+//             console.log("Data exported to path.txt successfully.");
+//         }
+//     });
+// }
+
+// main();
+function FindPath(){
+    // console.log("hehe");
+    Init();
+    
+    if(KnightsTour()) GenerateGrid();
     else{
         const notFound = document.getElementById('notFound');
         notFound.classList.remove('hidden');
@@ -141,6 +149,6 @@ function GenerateGrid() {
         } else {
             clearInterval(interval);
         }
-    }, 500);
+    }, 100);
 
 }
